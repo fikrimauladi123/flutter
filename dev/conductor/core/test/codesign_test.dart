@@ -105,18 +105,23 @@ void main() {
       createRunner(commands: <FakeCommand>[
         const FakeCommand(command: <String>[
           'git',
+          'rev-parse',
+          'HEAD',
+        ], stdout: revision),
+        const FakeCommand(command: <String>[
+          'git',
           'clone',
           '--origin',
           'upstream',
           '--',
-          'file://$flutterRoot/',
+          FrameworkRepository.defaultUpstream,
           '${checkoutsParentDirectory}flutter_conductor_checkouts/framework',
         ]),
         const FakeCommand(command: <String>[
           'git',
-          'rev-parse',
-          'HEAD',
-        ], stdout: revision),
+          'checkout',
+          FrameworkRepository.defaultBranch,
+        ]),
         const FakeCommand(command: <String>[
           'git',
           'rev-parse',
@@ -193,8 +198,13 @@ void main() {
           '--origin',
           'upstream',
           '--',
-          'file://$flutterRoot/',
+          FrameworkRepository.defaultUpstream,
           '${checkoutsParentDirectory}flutter_conductor_checkouts/framework',
+        ]),
+        const FakeCommand(command: <String>[
+          'git',
+          'checkout',
+          FrameworkRepository.defaultBranch,
         ]),
         const FakeCommand(command: <String>[
           'git',
@@ -281,8 +291,13 @@ void main() {
           '--origin',
           'upstream',
           '--',
-          'file://$flutterRoot/',
+          FrameworkRepository.defaultUpstream,
           '${checkoutsParentDirectory}flutter_conductor_checkouts/framework',
+        ]),
+        const FakeCommand(command: <String>[
+          'git',
+          'checkout',
+          FrameworkRepository.defaultBranch,
         ]),
         const FakeCommand(command: <String>[
           'git',
@@ -368,8 +383,13 @@ void main() {
           '--origin',
           'upstream',
           '--',
-          'file://$flutterRoot/',
+          FrameworkRepository.defaultUpstream,
           '${checkoutsParentDirectory}flutter_conductor_checkouts/framework',
+        ]),
+        const FakeCommand(command: <String>[
+          'git',
+          'checkout',
+          FrameworkRepository.defaultBranch,
         ]),
         const FakeCommand(command: <String>[
           'git',
@@ -427,8 +447,13 @@ void main() {
           '--origin',
           'upstream',
           '--',
-          'file://$flutterRoot/',
+          FrameworkRepository.defaultUpstream,
           '${checkoutsParentDirectory}flutter_conductor_checkouts/framework',
+        ]),
+        const FakeCommand(command: <String>[
+          'git',
+          'checkout',
+          FrameworkRepository.defaultBranch,
         ]),
         const FakeCommand(command: <String>[
           'git',

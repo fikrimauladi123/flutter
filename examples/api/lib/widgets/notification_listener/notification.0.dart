@@ -25,19 +25,20 @@ class MyApp extends StatelessWidget {
 class MyStatelessWidget extends StatelessWidget {
   const MyStatelessWidget({Key? key}) : super(key: key);
 
+  static const List<String> _tabs = <String>['Months', 'Days'];
+  static const List<String> _months = <String>[
+    'January',
+    'February',
+    'March',
+  ];
+  static const List<String> _days = <String>[
+    'Sunday',
+    'Monday',
+    'Tuesday',
+  ];
+
   @override
   Widget build(BuildContext context) {
-    const List<String> _tabs = <String>['Months', 'Days'];
-    const List<String> _months = <String>[
-      'January',
-      'February',
-      'March',
-    ];
-    const List<String> _days = <String>[
-      'Sunday',
-      'Monday',
-      'Tuesday',
-    ];
     return DefaultTabController(
       length: _tabs.length,
       child: Scaffold(
@@ -45,9 +46,9 @@ class MyStatelessWidget extends StatelessWidget {
         body: NotificationListener<ScrollNotification>(
           onNotification: (ScrollNotification scrollNotification) {
             if (scrollNotification is ScrollStartNotification) {
-              print('Scrolling has started');
+              debugPrint('Scrolling has started');
             } else if (scrollNotification is ScrollEndNotification) {
-              print('Scrolling has ended');
+              debugPrint('Scrolling has ended');
             }
             // Return true to cancel the notification bubbling.
             return true;

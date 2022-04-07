@@ -50,7 +50,7 @@ class User {
   }
 
   @override
-  int get hashCode => hashValues(email, name);
+  int get hashCode => Object.hash(email, name);
 }
 
 class AutocompleteBasicUserExample extends StatelessWidget {
@@ -79,7 +79,7 @@ class AutocompleteBasicUserExample extends StatelessWidget {
         });
       },
       onSelected: (User selection) {
-        print('You just selected ${_displayStringForOption(selection)}');
+        debugPrint('You just selected ${_displayStringForOption(selection)}');
       },
     );
   }

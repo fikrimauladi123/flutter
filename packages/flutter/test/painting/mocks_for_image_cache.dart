@@ -26,7 +26,7 @@ class TestImageInfo extends ImageInfo {
   }
 
   @override
-  int get hashCode => hashValues(value, image, scale, debugLabel);
+  int get hashCode => Object.hash(value, image, scale, debugLabel);
 
   @override
   bool operator ==(Object other) {
@@ -136,6 +136,6 @@ class LoadErrorCompleterImageProvider extends ImageProvider<LoadErrorCompleterIm
 
 class TestImageStreamCompleter extends ImageStreamCompleter {
   void testSetImage(ui.Image image) {
-    setImage(ImageInfo(image: image, scale: 1.0));
+    setImage(ImageInfo(image: image));
   }
 }

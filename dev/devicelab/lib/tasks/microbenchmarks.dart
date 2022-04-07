@@ -5,12 +5,13 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:flutter_devicelab/framework/devices.dart';
-import 'package:flutter_devicelab/framework/framework.dart';
-import 'package:flutter_devicelab/framework/task_result.dart';
-import 'package:flutter_devicelab/framework/utils.dart';
-import 'package:flutter_devicelab/microbenchmarks.dart';
 import 'package:path/path.dart' as path;
+
+import '../framework/devices.dart';
+import '../framework/framework.dart';
+import '../framework/task_result.dart';
+import '../framework/utils.dart';
+import '../microbenchmarks.dart';
 
 /// Creates a device lab task that runs benchmarks in
 /// `dev/benchmarks/microbenchmarks` reports results to the dashboard.
@@ -59,6 +60,7 @@ TaskFunction createMicrobenchmarkTask() {
       ...await _runMicrobench('lib/language/sync_star_semantics_bench.dart'),
       ...await _runMicrobench('lib/foundation/all_elements_bench.dart'),
       ...await _runMicrobench('lib/foundation/change_notifier_bench.dart'),
+      ...await _runMicrobench('lib/foundation/timeline_bench.dart'),
     };
 
     return TaskResult.success(allResults,

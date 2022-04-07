@@ -82,7 +82,7 @@ void main() {
       });
 
       test('logFilePathName was set when a new driver was created', () {
-        driver = VMServiceFlutterDriver.connectedTo(fakeClient, fakeIsolate, logCommunicationToFile: true);
+        driver = VMServiceFlutterDriver.connectedTo(fakeClient, fakeIsolate);
         logFile = File(driver.logFilePathName);
         expect(logFile.path, endsWith('.log'));
       });
@@ -113,7 +113,7 @@ void main() {
     });
 
     test('printCommunication = false', () async {
-      driver = VMServiceFlutterDriver.connectedTo(fakeClient, fakeIsolate, printCommunication: false);
+      driver = VMServiceFlutterDriver.connectedTo(fakeClient, fakeIsolate);
       await driver.waitFor(find.byTooltip('foo'), timeout: _kTestTimeout);
       expect(log, <String>[]);
     });
@@ -745,8 +745,8 @@ void main() {
       const String waitForCommandLog = '>>> {command: waitFor, timeout: 1234, finderType: ByTooltipMessage, text: logCommunicationToFile test}';
       const String responseLog = '<<< {isError: false, response: {status: ok}, type: Response}';
 
-      expect(commandLog.contains(waitForCommandLog), true, reason: '$commandLog not contains $waitForCommandLog');
-      expect(commandLog.contains(responseLog), true, reason: '$commandLog not contains $responseLog');
+      expect(commandLog, contains(waitForCommandLog), reason: '$commandLog not contains $waitForCommandLog');
+      expect(commandLog, contains(responseLog), reason: '$commandLog not contains $responseLog');
     });
 
     test('logCommunicationToFile = false', () async {
@@ -783,7 +783,7 @@ void main() {
     });
 
     test('printCommunication = false', () async {
-      driver = WebFlutterDriver.connectedTo(fakeConnection, printCommunication: false);
+      driver = WebFlutterDriver.connectedTo(fakeConnection);
       await driver.waitFor(find.byTooltip('printCommunication test'), timeout: _kTestTimeout);
       expect(log, <String>[]);
     });
